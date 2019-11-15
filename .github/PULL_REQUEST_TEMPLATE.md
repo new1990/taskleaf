@@ -25,7 +25,7 @@ SQLの組み方、マークアップ部分の書きぶり、自信がない部�
 判例:
 - `rake db:migrate`
 - `bundle install`
-- `secrets.yml` の変更が必要になります 
+- `secrets.yml` の変更が必要になります
 - ...
 
 ## 5. 優先度
