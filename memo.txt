@@ -1,0 +1,23 @@
+# Rake
+Unixではソースコードから実行用プログラムをビルドするために主にMakeというツールが使われてきた。RakeはRubyで記述することのできるRuby版のMake。
+Rails4以前ではRakeを使っているため、古いRailsアプリケーションを扱うためにはRakeについて学ぶ必要がある。またrakeコマンドのバージョンをGemfileで定義しているため、Bundlerのbundler execコマンドを通して実行する必要がある。
+Ex.
+・Rails４以降
+    rails db:migrate
+・Rails4以前
+    bundle exec rake db:migrate
+
+
+# モデルの継承の階層構造
+最上位：ApplicationRecord::Base
+↑
+ApplicationRecord
+↑
+UserやMicropostなど自分が作ったモデル
+
+# コントローラーの継承の階層構造
+最上位：ActionController::Base
+↑
+ApplicationController（ここで定義したルールはアプリケーションの全てのアクションに反映される）
+↑
+UserControllerやMicropostsController
