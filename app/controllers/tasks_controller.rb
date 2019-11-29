@@ -1,5 +1,7 @@
 class TasksController < ApplicationController
   def index
+    # 一覧のための全タスクデータを取得(ビューで使うためインスタンス変数)
+    @tasks = Task.all
   end
 
   def show
