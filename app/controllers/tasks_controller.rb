@@ -5,6 +5,10 @@ class TasksController < ApplicationController
   end
 
   def show
+    # 詳細画面に表示するためのTaskオブジェクトを取得
+    # find: モデルオブジェクトに対応するレコードをDBから検索する
+    # params[:id]：リクエストパラメーターから得られるid, つまりリクエストされたURL"tasks/[タスクのid]"の[タスクのid]部分が格納される
+    @task = Task.find(params[:id])
   end
 
   def new
