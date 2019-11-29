@@ -15,15 +15,24 @@ class TasksController < ApplicationController
     @task = Task.new
   end
 
-  def edit
-  end
-
   def create
     # 安全化されたtaskパラメータをtask_paramsメソッドで取得して、それを使ってTaskオブジェクトを作成する
     task = Task.new(task_params)
     task.save! # DBに保存
     # 一覧画面に遷移
     redirect_to tasks_url, notice: "タスク「#{task.name}」を登録しました。"
+  end
+
+  def edit
+    @task = Task.find(params[:id])
+  end
+
+  def update
+    # 編集対象のTaskオブジェクトを取得
+    task = Task.find(params[:id])
+    # taskパラメータの代入とDBへの保存
+    task.update!(task_params)
+    redirect_to task_url, notice: "タスク「#{task.name}」を更新しました。"
   end
 
   private
