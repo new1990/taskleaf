@@ -35,6 +35,13 @@ class TasksController < ApplicationController
     redirect_to task_url, notice: "タスク「#{task.name}」を更新しました。"
   end
 
+  def destroy
+    # 削除対象のTaskオブジェクトをDBから取得
+    task = Task.find(params[:id])
+    task.destroy
+    redirect_to tasks_url, notice: "タスク「#{task.name}」を削除しました。"
+  end
+
   private
 
     # フォームからリクエストパラメーターとして送られてきた情報が想定通りの形であることをチェックし、nameとdesctiptionの情報だけを抜き取る
