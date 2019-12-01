@@ -5,6 +5,9 @@ class Task < ApplicationRecord
     # 各TaskはUserに1つだけ属する
     belongs_to :user
 
+    scope :recent, -> { order(created_at: :desc) }
+    # Ex:- scope :active, -> {where(:active => true)}
+
     private
 
       # 検証エラーを発見したら、errorsにエラー内容を格納する
