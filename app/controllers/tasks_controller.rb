@@ -19,9 +19,9 @@ class TasksController < ApplicationController
     # 安全化されたtaskパラメータをtask_paramsメソッドで取得して、それを使ってTaskオブジェクトを作成する
     # @をつけることにより、エラーが発生しても入力した内容がフォームにそのまま残る
     @task = Task.new(task_params)
-    if task.save # DBに保存 バリデーションをつけたので、!がいらなくなった
+    if @task.save # DBに保存 バリデーションをつけたので、!がいらなくなった
       # 一覧画面に遷移
-      redirect_to tasks_url, notice: "タスク「#{task.name}」を登録しました。"
+      redirect_to tasks_url, notice: "タスク「#{@task.name}」を登録しました。"
     else
       # エラーの時は登録用のフォーム画面を再び表示してユーザーに再入力を促す
       render :new
