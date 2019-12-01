@@ -1,7 +1,7 @@
 class TasksController < ApplicationController
   def index
     # 一覧のための全タスクデータを取得(ビューで使うためインスタンス変数)
-    @tasks = current_user.tasks
+    @tasks = current_user.tasks.order(created_at: :desc)
   end
 
   def show
