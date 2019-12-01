@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
 
   def create
     # 送られてきたメールアドレスでユーザーを検索
-    user = User.find(email: session_params[:email])
+    user = User.find_by(email: session_params[:email])
     # ユーザーが見つかった場合は送られてきたパスワードによる認証を行う
     if user&.authenticate(session_params[:password])
       session[:user_id] = user.id
