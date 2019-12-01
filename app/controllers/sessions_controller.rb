@@ -1,4 +1,7 @@
 class SessionsController < ApplicationController
+  # ログイン画面を表示するためのアクションにlogin_requiredフィルタを実行しないようにする
+  skip_before_action :login_required
+
   def new
   end
 
