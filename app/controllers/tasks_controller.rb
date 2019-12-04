@@ -45,6 +45,12 @@ class TasksController < ApplicationController
     redirect_to tasks_url, notice: "タスク「#{@task.name}」を削除しました。"
   end
 
+  # 確認画面を表示するアクションを追加
+  def confirm_new
+    @task = current_user.tasks.new(task_params)
+    render :new unless @task.valid?
+  end
+
   private
 
     # フォームからリクエストパラメーターとして送られてきた情報が想定通りの形であることをチェックし、nameとdesctiptionの情報だけを抜き取る
