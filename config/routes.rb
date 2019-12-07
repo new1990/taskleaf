@@ -8,5 +8,9 @@ Rails.application.routes.draw do
   end
 
   root to: 'tasks#index' # ルートディレクトリ
-  resources :tasks
+  resources :tasks do
+    # 確認画面はCRUDアクションと見做されていないため、resourcesとは別に定義する
+    # tasks/new/confirm
+    post :confirm, action: :confirm_new, on: :new
+  end
 end
