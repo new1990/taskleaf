@@ -30,6 +30,8 @@ class TasksController < ApplicationController
     end
 
     if @task.save # DBに保存 バリデーションをつけたので、!がいらなくなった
+      # アカウントを作成されると登録完了メールが送信される
+      TaskMailer.creation_email(@task).deliver_now
       # 一覧画面に遷移
       redirect_to tasks_url, notice: "タスク「#{@task.name}」を登録しました。"
     else
