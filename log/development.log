@@ -366,3 +366,313 @@ Processing by TasksController#index as HTML
 Completed 200 OK in 131ms (Views: 112.2ms | ActiveRecord: 2.3ms)
 
 
+Started GET "/tasks?utf8=%E2%9C%93&q%5Bname_cont%5D=&commit=%E6%A4%9C%E7%B4%A2" for 172.26.0.1 at 2019-12-07 11:31:59 +0000
+Cannot render console from 172.26.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by TasksController#index as HTML
+  Parameters: {"utf8"=>"✓", "q"=>{"name_cont"=>""}, "commit"=>"検索"}
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11
+  Rendering tasks/index.html.slim within layouts/application
+  [1m[36mTask Load (1.4ms)[0m  [1m[34mSELECT DISTINCT "tasks".* FROM "tasks" WHERE "tasks"."user_id" = ? ORDER BY "tasks"."created_at" DESC[0m  [["user_id", 1]]
+  ↳ app/views/tasks/index.html.slim:26
+  Rendered tasks/index.html.slim within layouts/application (7.6ms)
+Completed 200 OK in 117ms (Views: 99.3ms | ActiveRecord: 2.6ms)
+
+
+Started GET "/tasks?utf8=%E2%9C%93&q%5Bname_cont%5D=&q%5Bcreated_at_gteq%5D=12&commit=%E6%A4%9C%E7%B4%A2" for 172.26.0.1 at 2019-12-07 11:32:05 +0000
+Cannot render console from 172.26.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by TasksController#index as HTML
+  Parameters: {"utf8"=>"✓", "q"=>{"name_cont"=>"", "created_at_gteq"=>"12"}, "commit"=>"検索"}
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11
+  Rendering tasks/index.html.slim within layouts/application
+  [1m[36mTask Load (1.2ms)[0m  [1m[34mSELECT DISTINCT "tasks".* FROM "tasks" WHERE "tasks"."user_id" = ? AND "tasks"."created_at" >= '2019-12-11 15:00:00' ORDER BY "tasks"."created_at" DESC[0m  [["user_id", 1]]
+  ↳ app/views/tasks/index.html.slim:26
+  Rendered tasks/index.html.slim within layouts/application (7.1ms)
+Completed 200 OK in 138ms (Views: 117.5ms | ActiveRecord: 2.8ms)
+
+
+Started GET "/tasks?utf8=%E2%9C%93&q%5Bname_cont%5D=&q%5Bcreated_at_gteq%5D=12&commit=%E6%A4%9C%E7%B4%A2" for 172.26.0.1 at 2019-12-07 11:56:49 +0000
+Cannot render console from 172.26.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by TasksController#index as HTML
+  Parameters: {"utf8"=>"✓", "q"=>{"name_cont"=>"", "created_at_gteq"=>"12"}, "commit"=>"検索"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11
+  Rendering tasks/index.html.slim within layouts/application
+  [1m[36mTask Load (1.8ms)[0m  [1m[34mSELECT DISTINCT "tasks".* FROM "tasks" WHERE "tasks"."user_id" = ? AND "tasks"."created_at" >= '2019-12-11 15:00:00'[0m  [["user_id", 1]]
+  ↳ app/views/tasks/index.html.slim:26
+  Rendered tasks/index.html.slim within layouts/application (8.5ms)
+Completed 200 OK in 165ms (Views: 116.9ms | ActiveRecord: 6.4ms)
+
+
+Started GET "/tasks?utf8=%E2%9C%93&q%5Bname_cont%5D=&q%5Bcreated_at_gteq%5D=12&commit=%E6%A4%9C%E7%B4%A2" for 172.26.0.1 at 2019-12-07 11:56:53 +0000
+Cannot render console from 172.26.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by TasksController#index as HTML
+  Parameters: {"utf8"=>"✓", "q"=>{"name_cont"=>"", "created_at_gteq"=>"12"}, "commit"=>"検索"}
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11
+  Rendering tasks/index.html.slim within layouts/application
+  [1m[36mTask Load (1.1ms)[0m  [1m[34mSELECT DISTINCT "tasks".* FROM "tasks" WHERE "tasks"."user_id" = ? AND "tasks"."created_at" >= '2019-12-11 15:00:00'[0m  [["user_id", 1]]
+  ↳ app/views/tasks/index.html.slim:26
+  Rendered tasks/index.html.slim within layouts/application (7.7ms)
+Completed 200 OK in 98ms (Views: 84.5ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/tasks?utf8=%E2%9C%93&q%5Bname_cont%5D=ho&q%5Bcreated_at_gteq%5D=&commit=%E6%A4%9C%E7%B4%A2" for 172.26.0.1 at 2019-12-07 11:57:06 +0000
+Cannot render console from 172.26.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by TasksController#index as HTML
+  Parameters: {"utf8"=>"✓", "q"=>{"name_cont"=>"ho", "created_at_gteq"=>""}, "commit"=>"検索"}
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11
+  Rendering tasks/index.html.slim within layouts/application
+  [1m[36mTask Load (1.1ms)[0m  [1m[34mSELECT DISTINCT "tasks".* FROM "tasks" WHERE "tasks"."user_id" = ? AND "tasks"."name" LIKE '%ho%'[0m  [["user_id", 1]]
+  ↳ app/views/tasks/index.html.slim:26
+  Rendered tasks/index.html.slim within layouts/application (12.2ms)
+Completed 200 OK in 120ms (Views: 102.9ms | ActiveRecord: 3.0ms)
+
+
+Started GET "/?commit=%E6%A4%9C%E7%B4%A2&q%5Bcreated_at_gteq%5D=&q%5Bname_cont%5D=ho&q%5Bs%5D=name+asc&utf8=%E2%9C%93" for 172.26.0.1 at 2019-12-07 11:57:09 +0000
+Cannot render console from 172.26.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by TasksController#index as HTML
+  Parameters: {"commit"=>"検索", "q"=>{"created_at_gteq"=>"", "name_cont"=>"ho", "s"=>"name asc"}, "utf8"=>"✓"}
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11
+  Rendering tasks/index.html.slim within layouts/application
+  [1m[36mTask Load (1.7ms)[0m  [1m[34mSELECT DISTINCT "tasks".* FROM "tasks" WHERE "tasks"."user_id" = ? AND "tasks"."name" LIKE '%ho%' ORDER BY "tasks"."name" ASC[0m  [["user_id", 1]]
+  ↳ app/views/tasks/index.html.slim:26
+  Rendered tasks/index.html.slim within layouts/application (10.4ms)
+Completed 200 OK in 133ms (Views: 108.5ms | ActiveRecord: 2.9ms)
+
+
+Started GET "/?commit=%E6%A4%9C%E7%B4%A2&q%5Bcreated_at_gteq%5D=&q%5Bname_cont%5D=ho&q%5Bs%5D=name+desc&utf8=%E2%9C%93" for 172.26.0.1 at 2019-12-07 11:57:10 +0000
+Cannot render console from 172.26.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by TasksController#index as HTML
+  Parameters: {"commit"=>"検索", "q"=>{"created_at_gteq"=>"", "name_cont"=>"ho", "s"=>"name desc"}, "utf8"=>"✓"}
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11
+  Rendering tasks/index.html.slim within layouts/application
+  [1m[36mTask Load (1.3ms)[0m  [1m[34mSELECT DISTINCT "tasks".* FROM "tasks" WHERE "tasks"."user_id" = ? AND "tasks"."name" LIKE '%ho%' ORDER BY "tasks"."name" DESC[0m  [["user_id", 1]]
+  ↳ app/views/tasks/index.html.slim:26
+  Rendered tasks/index.html.slim within layouts/application (9.0ms)
+Completed 200 OK in 127ms (Views: 104.8ms | ActiveRecord: 2.7ms)
+
+
+Started GET "/?commit=%E6%A4%9C%E7%B4%A2&q%5Bcreated_at_gteq%5D=&q%5Bname_cont%5D=ho&q%5Bs%5D=name+asc&utf8=%E2%9C%93" for 172.26.0.1 at 2019-12-07 11:57:11 +0000
+Cannot render console from 172.26.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by TasksController#index as HTML
+  Parameters: {"commit"=>"検索", "q"=>{"created_at_gteq"=>"", "name_cont"=>"ho", "s"=>"name asc"}, "utf8"=>"✓"}
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11
+  Rendering tasks/index.html.slim within layouts/application
+  [1m[36mTask Load (1.1ms)[0m  [1m[34mSELECT DISTINCT "tasks".* FROM "tasks" WHERE "tasks"."user_id" = ? AND "tasks"."name" LIKE '%ho%' ORDER BY "tasks"."name" ASC[0m  [["user_id", 1]]
+  ↳ app/views/tasks/index.html.slim:26
+  Rendered tasks/index.html.slim within layouts/application (9.6ms)
+Completed 200 OK in 142ms (Views: 122.7ms | ActiveRecord: 2.2ms)
+
+
+Started GET "/?commit=%E6%A4%9C%E7%B4%A2&q%5Bcreated_at_gteq%5D=&q%5Bname_cont%5D=ho&q%5Bs%5D=name+desc&utf8=%E2%9C%93" for 172.26.0.1 at 2019-12-07 11:57:11 +0000
+Cannot render console from 172.26.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by TasksController#index as HTML
+  Parameters: {"commit"=>"検索", "q"=>{"created_at_gteq"=>"", "name_cont"=>"ho", "s"=>"name desc"}, "utf8"=>"✓"}
+  [1m[36mUser Load (2.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11
+  Rendering tasks/index.html.slim within layouts/application
+  [1m[36mTask Load (1.5ms)[0m  [1m[34mSELECT DISTINCT "tasks".* FROM "tasks" WHERE "tasks"."user_id" = ? AND "tasks"."name" LIKE '%ho%' ORDER BY "tasks"."name" DESC[0m  [["user_id", 1]]
+  ↳ app/views/tasks/index.html.slim:26
+  Rendered tasks/index.html.slim within layouts/application (8.0ms)
+Completed 200 OK in 167ms (Views: 132.5ms | ActiveRecord: 3.9ms)
+
+
+Started GET "/tasks/new" for 172.26.0.1 at 2019-12-07 11:57:23 +0000
+Cannot render console from 172.26.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by TasksController#new as HTML
+  [1m[36mUser Load (1.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11
+  Rendering tasks/new.html.slim within layouts/application
+  Rendered tasks/new.html.slim within layouts/application (6.2ms)
+Completed 200 OK in 236ms (Views: 196.4ms | ActiveRecord: 1.8ms)
+
+
+Started POST "/tasks/new/confirm" for 172.26.0.1 at 2019-12-07 11:57:27 +0000
+Cannot render console from 172.26.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by TasksController#confirm_new as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"I4gjP9nemgXPwQu1uycqkG9eynMPE3bFqAeve3UE38IZA+vQZmoecHGSkJ3NPkAfQRGkYaEU7rgfXLw4rqHcdQ==", "task"=>{"name"=>"srth", "description"=>"atha"}, "commit"=>"確認"}
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11
+Unpermitted parameter: :description
+  Rendering tasks/confirm_new.html.slim within layouts/application
+  Rendered tasks/confirm_new.html.slim within layouts/application (3.2ms)
+Completed 200 OK in 172ms (Views: 147.5ms | ActiveRecord: 1.3ms)
+
+
+Started POST "/tasks" for 172.26.0.1 at 2019-12-07 11:57:28 +0000
+Cannot render console from 172.26.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by TasksController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"O4ZWxkd91Q2oIk35blzRf2Hs8AOOOq5VE/h0PDjufgeung1TfXrxc19oT/eJfeqO7M1Np3lafENOujTxShdrTQ==", "task"=>{"name"=>"srth", "description"=>""}, "commit"=>"登録"}
+  [1m[36mUser Load (1.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11
+Unpermitted parameter: :description
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/tasks_controller.rb:32
+  [1m[36mTask Create (7.9ms)[0m  [1m[32mINSERT INTO "tasks" ("name", "created_at", "updated_at", "user_id") VALUES (?, ?, ?, ?)[0m  [["name", "srth"], ["created_at", "2019-12-07 11:57:28.297371"], ["updated_at", "2019-12-07 11:57:28.297371"], ["user_id", 1]]
+  ↳ app/controllers/tasks_controller.rb:32
+  [1m[35m (5.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/tasks_controller.rb:32
+Redirected to http://localhost:3000/tasks
+Completed 302 Found in 24ms (ActiveRecord: 14.7ms)
+
+
+Started GET "/tasks" for 172.26.0.1 at 2019-12-07 11:57:28 +0000
+Cannot render console from 172.26.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by TasksController#index as HTML
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11
+  Rendering tasks/index.html.slim within layouts/application
+  [1m[36mTask Load (1.9ms)[0m  [1m[34mSELECT DISTINCT "tasks".* FROM "tasks" WHERE "tasks"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/views/tasks/index.html.slim:26
+  Rendered tasks/index.html.slim within layouts/application (8.3ms)
+Completed 200 OK in 150ms (Views: 131.1ms | ActiveRecord: 3.0ms)
+
+
+Started GET "/tasks?utf8=%E2%9C%93&q%5Bname_cont%5D=o&q%5Bcreated_at_gteq%5D=&commit=%E6%A4%9C%E7%B4%A2" for 172.26.0.1 at 2019-12-07 11:57:34 +0000
+Cannot render console from 172.26.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by TasksController#index as HTML
+  Parameters: {"utf8"=>"✓", "q"=>{"name_cont"=>"o", "created_at_gteq"=>""}, "commit"=>"検索"}
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11
+  Rendering tasks/index.html.slim within layouts/application
+  [1m[36mTask Load (1.9ms)[0m  [1m[34mSELECT DISTINCT "tasks".* FROM "tasks" WHERE "tasks"."user_id" = ? AND "tasks"."name" LIKE '%o%'[0m  [["user_id", 1]]
+  ↳ app/views/tasks/index.html.slim:26
+  Rendered tasks/index.html.slim within layouts/application (8.8ms)
+Completed 200 OK in 161ms (Views: 137.0ms | ActiveRecord: 3.1ms)
+
+
+Started GET "/tasks/new" for 172.26.0.1 at 2019-12-07 11:57:36 +0000
+Cannot render console from 172.26.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by TasksController#new as HTML
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11
+  Rendering tasks/new.html.slim within layouts/application
+  Rendered tasks/new.html.slim within layouts/application (3.2ms)
+Completed 200 OK in 179ms (Views: 149.4ms | ActiveRecord: 1.1ms)
+
+
+Started POST "/tasks/new/confirm" for 172.26.0.1 at 2019-12-07 11:57:40 +0000
+Cannot render console from 172.26.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by TasksController#confirm_new as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"ZNTwIkXHWy3S710+IO8jXdcmLiPrNOJ5XhauDe6okcleXzjN+nPfWGy8xhZW9knS+WlAMUUzegTpTb1ONQ2Sfg==", "task"=>{"name"=>"ghu", "description"=>"garg"}, "commit"=>"確認"}
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11
+Unpermitted parameter: :description
+  Rendering tasks/confirm_new.html.slim within layouts/application
+  Rendered tasks/confirm_new.html.slim within layouts/application (3.1ms)
+Completed 200 OK in 149ms (Views: 124.2ms | ActiveRecord: 1.1ms)
+
+
+Started POST "/tasks" for 172.26.0.1 at 2019-12-07 11:57:42 +0000
+Cannot render console from 172.26.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by TasksController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"arlpx+rwp1kJpU5SoYmocvbBiWKUUHLwFpHPL21OCzz/oTJS0PeDJ/7vTFxGqJODe+A0xmMwoOZL04/iH7cedg==", "task"=>{"name"=>"ghu", "description"=>""}, "commit"=>"登録"}
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11
+Unpermitted parameter: :description
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/tasks_controller.rb:32
+  [1m[36mTask Create (9.4ms)[0m  [1m[32mINSERT INTO "tasks" ("name", "created_at", "updated_at", "user_id") VALUES (?, ?, ?, ?)[0m  [["name", "ghu"], ["created_at", "2019-12-07 11:57:42.780223"], ["updated_at", "2019-12-07 11:57:42.780223"], ["user_id", 1]]
+  ↳ app/controllers/tasks_controller.rb:32
+  [1m[35m (5.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/tasks_controller.rb:32
+Redirected to http://localhost:3000/tasks
+Completed 302 Found in 27ms (ActiveRecord: 16.5ms)
+
+
+Started GET "/tasks" for 172.26.0.1 at 2019-12-07 11:57:42 +0000
+Cannot render console from 172.26.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by TasksController#index as HTML
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11
+  Rendering tasks/index.html.slim within layouts/application
+  [1m[36mTask Load (1.4ms)[0m  [1m[34mSELECT DISTINCT "tasks".* FROM "tasks" WHERE "tasks"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/views/tasks/index.html.slim:26
+  Rendered tasks/index.html.slim within layouts/application (11.2ms)
+Completed 200 OK in 149ms (Views: 129.6ms | ActiveRecord: 2.6ms)
+
+
+Started GET "/tasks?utf8=%E2%9C%93&q%5Bname_cont%5D=h&q%5Bcreated_at_gteq%5D=&commit=%E6%A4%9C%E7%B4%A2" for 172.26.0.1 at 2019-12-07 11:57:44 +0000
+Cannot render console from 172.26.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by TasksController#index as HTML
+  Parameters: {"utf8"=>"✓", "q"=>{"name_cont"=>"h", "created_at_gteq"=>""}, "commit"=>"検索"}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11
+  Rendering tasks/index.html.slim within layouts/application
+  [1m[36mTask Load (1.2ms)[0m  [1m[34mSELECT DISTINCT "tasks".* FROM "tasks" WHERE "tasks"."user_id" = ? AND "tasks"."name" LIKE '%h%'[0m  [["user_id", 1]]
+  ↳ app/views/tasks/index.html.slim:26
+  Rendered tasks/index.html.slim within layouts/application (8.3ms)
+Completed 200 OK in 116ms (Views: 99.9ms | ActiveRecord: 2.2ms)
+
+
+Started GET "/?commit=%E6%A4%9C%E7%B4%A2&q%5Bcreated_at_gteq%5D=&q%5Bname_cont%5D=h&q%5Bs%5D=name+asc&utf8=%E2%9C%93" for 172.26.0.1 at 2019-12-07 11:57:49 +0000
+Cannot render console from 172.26.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by TasksController#index as HTML
+  Parameters: {"commit"=>"検索", "q"=>{"created_at_gteq"=>"", "name_cont"=>"h", "s"=>"name asc"}, "utf8"=>"✓"}
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11
+  Rendering tasks/index.html.slim within layouts/application
+  [1m[36mTask Load (3.6ms)[0m  [1m[34mSELECT DISTINCT "tasks".* FROM "tasks" WHERE "tasks"."user_id" = ? AND "tasks"."name" LIKE '%h%' ORDER BY "tasks"."name" ASC[0m  [["user_id", 1]]
+  ↳ app/views/tasks/index.html.slim:26
+  Rendered tasks/index.html.slim within layouts/application (20.9ms)
+Completed 200 OK in 230ms (Views: 187.7ms | ActiveRecord: 5.0ms)
+
+
+Started GET "/?commit=%E6%A4%9C%E7%B4%A2&q%5Bcreated_at_gteq%5D=&q%5Bname_cont%5D=h&q%5Bs%5D=name+desc&utf8=%E2%9C%93" for 172.26.0.1 at 2019-12-07 11:57:50 +0000
+Cannot render console from 172.26.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by TasksController#index as HTML
+  Parameters: {"commit"=>"検索", "q"=>{"created_at_gteq"=>"", "name_cont"=>"h", "s"=>"name desc"}, "utf8"=>"✓"}
+  [1m[36mUser Load (3.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11
+  Rendering tasks/index.html.slim within layouts/application
+  [1m[36mTask Load (1.8ms)[0m  [1m[34mSELECT DISTINCT "tasks".* FROM "tasks" WHERE "tasks"."user_id" = ? AND "tasks"."name" LIKE '%h%' ORDER BY "tasks"."name" DESC[0m  [["user_id", 1]]
+  ↳ app/views/tasks/index.html.slim:26
+  Rendered tasks/index.html.slim within layouts/application (9.2ms)
+Completed 200 OK in 236ms (Views: 186.0ms | ActiveRecord: 4.9ms)
+
+
+Started GET "/?commit=%E6%A4%9C%E7%B4%A2&q%5Bcreated_at_gteq%5D=&q%5Bname_cont%5D=h&q%5Bs%5D=name+asc&utf8=%E2%9C%93" for 172.26.0.1 at 2019-12-07 11:57:51 +0000
+Cannot render console from 172.26.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by TasksController#index as HTML
+  Parameters: {"commit"=>"検索", "q"=>{"created_at_gteq"=>"", "name_cont"=>"h", "s"=>"name asc"}, "utf8"=>"✓"}
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11
+  Rendering tasks/index.html.slim within layouts/application
+  [1m[36mTask Load (1.8ms)[0m  [1m[34mSELECT DISTINCT "tasks".* FROM "tasks" WHERE "tasks"."user_id" = ? AND "tasks"."name" LIKE '%h%' ORDER BY "tasks"."name" ASC[0m  [["user_id", 1]]
+  ↳ app/views/tasks/index.html.slim:26
+  Rendered tasks/index.html.slim within layouts/application (9.3ms)
+Completed 200 OK in 238ms (Views: 207.2ms | ActiveRecord: 3.2ms)
+
+
+Started GET "/?commit=%E6%A4%9C%E7%B4%A2&q%5Bcreated_at_gteq%5D=&q%5Bname_cont%5D=h&q%5Bs%5D=name+desc&utf8=%E2%9C%93" for 172.26.0.1 at 2019-12-07 11:58:04 +0000
+Cannot render console from 172.26.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by TasksController#index as HTML
+  Parameters: {"commit"=>"検索", "q"=>{"created_at_gteq"=>"", "name_cont"=>"h", "s"=>"name desc"}, "utf8"=>"✓"}
+  [1m[36mUser Load (2.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11
+  Rendering tasks/index.html.slim within layouts/application
+  [1m[36mTask Load (1.7ms)[0m  [1m[34mSELECT DISTINCT "tasks".* FROM "tasks" WHERE "tasks"."user_id" = ? AND "tasks"."name" LIKE '%h%' ORDER BY "tasks"."name" DESC[0m  [["user_id", 1]]
+  ↳ app/views/tasks/index.html.slim:26
+  Rendered tasks/index.html.slim within layouts/application (13.5ms)
+Completed 200 OK in 177ms (Views: 139.8ms | ActiveRecord: 4.3ms)
+
+
+Started GET "/?commit=%E6%A4%9C%E7%B4%A2&q%5Bcreated_at_gteq%5D=&q%5Bname_cont%5D=h&q%5Bs%5D=name+asc&utf8=%E2%9C%93" for 172.26.0.1 at 2019-12-07 11:58:05 +0000
+Cannot render console from 172.26.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by TasksController#index as HTML
+  Parameters: {"commit"=>"検索", "q"=>{"created_at_gteq"=>"", "name_cont"=>"h", "s"=>"name asc"}, "utf8"=>"✓"}
+  [1m[36mUser Load (2.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11
+  Rendering tasks/index.html.slim within layouts/application
+  [1m[36mTask Load (1.3ms)[0m  [1m[34mSELECT DISTINCT "tasks".* FROM "tasks" WHERE "tasks"."user_id" = ? AND "tasks"."name" LIKE '%h%' ORDER BY "tasks"."name" ASC[0m  [["user_id", 1]]
+  ↳ app/views/tasks/index.html.slim:26
+  Rendered tasks/index.html.slim within layouts/application (8.2ms)
+Completed 200 OK in 188ms (Views: 149.3ms | ActiveRecord: 3.7ms)
+
+
