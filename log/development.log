@@ -38,3 +38,641 @@ Processing by ApplicationController#hello as HTML
 Completed 200 OK in 8ms (Views: 7.3ms | ActiveRecord: 0.0ms)
 
 
+Started GET "/tasks" for 172.26.0.1 at 2019-12-07 09:51:27 +0000
+Cannot render console from 172.26.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  
+ActiveRecord::PendingMigrationError (
+
+Migrations are pending. To resolve this issue, run:
+
+        bin/rails db:migrate RAILS_ENV=development
+
+):
+  
+activerecord (5.2.3) lib/active_record/migration.rb:579:in `check_pending!'
+activerecord (5.2.3) lib/active_record/migration.rb:556:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+activesupport (5.2.3) lib/active_support/callbacks.rb:98:in `run_callbacks'
+actionpack (5.2.3) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/debug_exceptions.rb:61:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:22:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.3) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.7) lib/rack/method_override.rb:22:in `call'
+rack (2.0.7) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.3) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.7) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.3) lib/rails/engine.rb:524:in `call'
+puma (3.12.2) lib/puma/configuration.rb:227:in `call'
+puma (3.12.2) lib/puma/server.rb:674:in `handle_request'
+puma (3.12.2) lib/puma/server.rb:476:in `process_client'
+puma (3.12.2) lib/puma/server.rb:334:in `block in run'
+puma (3.12.2) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+Migrating to CreateTasks (20191128084059)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ db/migrate/20191128084059_create_tasks.rb:3
+  [1m[35m (7.7ms)[0m  [1m[35mCREATE TABLE "tasks" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(30) NOT NULL, "description" text, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20191128084059_create_tasks.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (2.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20191128084059"]]
+  ↳ bin/rails:4
+  [1m[35m (5.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:4
+Migrating to ChangeTasksNameNotNull (20191130083041)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "atasks" ("id" integer NOT NULL PRIMARY KEY, "name" varchar(30) NOT NULL, "description" text DEFAULT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20191130083041_change_tasks_name_not_null.rb:3
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "atasks" ("id","name","description","created_at","updated_at")
+                     SELECT "id","name","description","created_at","updated_at" FROM "tasks"[0m
+  ↳ db/migrate/20191130083041_change_tasks_name_not_null.rb:3
+  [1m[35m (4.6ms)[0m  [1m[35mDROP TABLE "tasks"[0m
+  ↳ db/migrate/20191130083041_change_tasks_name_not_null.rb:3
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "tasks" ("id" integer NOT NULL PRIMARY KEY, "name" varchar(30) NOT NULL, "description" text DEFAULT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20191130083041_change_tasks_name_not_null.rb:3
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "tasks" ("id","name","description","created_at","updated_at")
+                     SELECT "id","name","description","created_at","updated_at" FROM "atasks"[0m
+  ↳ db/migrate/20191130083041_change_tasks_name_not_null.rb:3
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE "atasks"[0m
+  ↳ db/migrate/20191130083041_change_tasks_name_not_null.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (2.8ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20191130083041"]]
+  ↳ bin/rails:4
+  [1m[35m (7.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:4
+Migrating to ChangeTasksNameLimit30 (20191130090025)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "atasks" ("id" integer NOT NULL PRIMARY KEY, "name" varchar(30) NOT NULL, "description" text DEFAULT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20191130090025_change_tasks_name_limit30.rb:3
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "atasks" ("id","name","description","created_at","updated_at")
+                     SELECT "id","name","description","created_at","updated_at" FROM "tasks"[0m
+  ↳ db/migrate/20191130090025_change_tasks_name_limit30.rb:3
+  [1m[35m (5.0ms)[0m  [1m[35mDROP TABLE "tasks"[0m
+  ↳ db/migrate/20191130090025_change_tasks_name_limit30.rb:3
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "tasks" ("id" integer NOT NULL PRIMARY KEY, "name" varchar(30) NOT NULL, "description" text DEFAULT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20191130090025_change_tasks_name_limit30.rb:3
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "tasks" ("id","name","description","created_at","updated_at")
+                     SELECT "id","name","description","created_at","updated_at" FROM "atasks"[0m
+  ↳ db/migrate/20191130090025_change_tasks_name_limit30.rb:3
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE "atasks"[0m
+  ↳ db/migrate/20191130090025_change_tasks_name_limit30.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (1.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20191130090025"]]
+  ↳ bin/rails:4
+  [1m[35m (5.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:4
+Migrating to CreateUsers (20191201030729)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (5.6ms)[0m  [1m[35mCREATE TABLE "users" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar NOT NULL, "email" varchar NOT NULL, "password_digest" varchar NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20191201030729_create_users.rb:3
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  ↳ db/migrate/20191201030729_create_users.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (1.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20191201030729"]]
+  ↳ bin/rails:4
+  [1m[35m (5.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:4
+Migrating to AddAdminToUsers (20191201034856)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (6.1ms)[0m  [1m[35mALTER TABLE "users" ADD "admin" boolean DEFAULT 0 NOT NULL[0m
+  ↳ db/migrate/20191201034856_add_admin_to_users.rb:4
+  [1m[36mActiveRecord::SchemaMigration Create (1.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20191201034856"]]
+  ↳ bin/rails:4
+  [1m[35m (2.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:4
+Migrating to AddUserIdToTasks (20191201063408)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (5.0ms)[0m  [1m[31mDELETE FROM tasks;[0m
+  ↳ db/migrate/20191201063408_add_user_id_to_tasks.rb:5
+  [1m[35m (1.6ms)[0m  [1m[35mALTER TABLE "tasks" ADD "user_id" integer[0m
+  ↳ db/migrate/20191201063408_add_user_id_to_tasks.rb:6
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_tasks_on_user_id" ON "tasks" ("user_id")[0m
+  ↳ db/migrate/20191201063408_add_user_id_to_tasks.rb:6
+  [1m[36mActiveRecord::SchemaMigration Create (1.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20191201063408"]]
+  ↳ bin/rails:4
+  [1m[35m (5.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:4
+Migrating to ChangeUserIdToTasks (20191201084502)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "atasks" ("id" integer NOT NULL PRIMARY KEY, "name" varchar(30) NOT NULL, "description" text DEFAULT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "user_id" integer DEFAULT NULL)[0m
+  ↳ db/migrate/20191201084502_change_user_id_to_tasks.rb:3
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "tindex_atasks_on_user_id" ON "atasks" ("user_id")[0m
+  ↳ db/migrate/20191201084502_change_user_id_to_tasks.rb:3
+  [1m[35m (0.9ms)[0m  [1m[32mINSERT INTO "atasks" ("id","name","description","created_at","updated_at","user_id")
+                     SELECT "id","name","description","created_at","updated_at","user_id" FROM "tasks"[0m
+  ↳ db/migrate/20191201084502_change_user_id_to_tasks.rb:3
+  [1m[35m (6.2ms)[0m  [1m[35mDROP TABLE "tasks"[0m
+  ↳ db/migrate/20191201084502_change_user_id_to_tasks.rb:3
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE TABLE "tasks" ("id" integer NOT NULL PRIMARY KEY, "name" varchar(30) NOT NULL, "description" text DEFAULT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "user_id" integer NOT NULL)[0m
+  ↳ db/migrate/20191201084502_change_user_id_to_tasks.rb:3
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_tasks_on_user_id" ON "tasks" ("user_id")[0m
+  ↳ db/migrate/20191201084502_change_user_id_to_tasks.rb:3
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "tasks" ("id","name","description","created_at","updated_at","user_id")
+                     SELECT "id","name","description","created_at","updated_at","user_id" FROM "atasks"[0m
+  ↳ db/migrate/20191201084502_change_user_id_to_tasks.rb:3
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "atasks"[0m
+  ↳ db/migrate/20191201084502_change_user_id_to_tasks.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (1.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20191201084502"]]
+  ↳ bin/rails:4
+  [1m[35m (3.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:4
+  [1m[36mActiveRecord::InternalMetadata Load (1.0ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:4
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (1.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+Started GET "/tasks" for 172.26.0.1 at 2019-12-07 09:51:44 +0000
+Cannot render console from 172.26.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Processing by TasksController#index as HTML
+Redirected to http://localhost:3000/login
+Filter chain halted as :login_required rendered or redirected
+Completed 302 Found in 6ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/login" for 172.26.0.1 at 2019-12-07 09:51:44 +0000
+Cannot render console from 172.26.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.slim within layouts/application
+  Rendered sessions/new.html.slim within layouts/application (28.2ms)
+Completed 200 OK in 979ms (Views: 965.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/login" for 172.26.0.1 at 2019-12-07 09:51:46 +0000
+Cannot render console from 172.26.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"y+e8Rl7AN8LiRcER2KgFjfi7M+7dCb/FpRJgMdieJM9e/+fTZMcTvBUPwx8/iT58dZqOSippbdP4UCD8qmcxhQ==", "session"=>{"email"=>"yuki@yuki.com", "password"=>"[FILTERED]"}, "commit"=>"ログインする"}
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "yuki@yuki.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:10
+  Rendering sessions/new.html.slim within layouts/application
+  Rendered sessions/new.html.slim within layouts/application (3.4ms)
+Completed 200 OK in 204ms (Views: 174.2ms | ActiveRecord: 2.8ms)
+
+
+Started GET "/login" for 172.26.0.1 at 2019-12-07 09:52:57 +0000
+Cannot render console from 172.26.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.slim within layouts/application
+  Rendered sessions/new.html.slim within layouts/application (6.2ms)
+Completed 200 OK in 172ms (Views: 160.5ms | ActiveRecord: 0.0ms)
+
+
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (2.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "yuki@yuki.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (6.0ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "password_digest", "created_at", "updated_at", "admin") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "yuki"], ["email", "yuki@yuki.com"], ["password_digest", "$2a$12$/9NFKs4XX1nNzfBZeOFvFO7NcsVSjW8fIW8t68m5rw7FhuKrgFKqK"], ["created_at", "2019-12-07 09:55:20.550395"], ["updated_at", "2019-12-07 09:55:20.550395"], ["admin", 1]]
+  [1m[35m (4.3ms)[0m  [1m[36mcommit transaction[0m
+Started GET "/login" for 172.26.0.1 at 2019-12-07 09:55:23 +0000
+Cannot render console from 172.26.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.slim within layouts/application
+  Rendered sessions/new.html.slim within layouts/application (3.0ms)
+Completed 200 OK in 152ms (Views: 134.4ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/login" for 172.26.0.1 at 2019-12-07 09:55:28 +0000
+Cannot render console from 172.26.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"qBfzkiWAksLyFuDYMGISAhEqQtLO3r8te/RV7LHVlM49D6gHH4e2vAVc4tbXQynznAv/djm+bTsmthUhwyyBhA==", "session"=>{"email"=>"yuki@yuki.com", "password"=>"[FILTERED]"}, "commit"=>"ログインする"}
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "yuki@yuki.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:10
+Redirected to http://localhost:3000/
+Completed 302 Found in 227ms (ActiveRecord: 3.0ms)
+
+
+Started GET "/" for 172.26.0.1 at 2019-12-07 09:55:28 +0000
+Cannot render console from 172.26.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by TasksController#index as HTML
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11
+  Rendering tasks/index.html.slim within layouts/application
+  [1m[36mTask Load (1.3ms)[0m  [1m[34mSELECT DISTINCT "tasks".* FROM "tasks" WHERE "tasks"."user_id" = ? ORDER BY "tasks"."created_at" DESC[0m  [["user_id", 1]]
+  ↳ app/views/tasks/index.html.slim:22
+  Rendered tasks/index.html.slim within layouts/application (211.0ms)
+Completed 200 OK in 430ms (Views: 351.8ms | ActiveRecord: 3.8ms)
+
+
+Started GET "/tasks/new" for 172.26.0.1 at 2019-12-07 11:27:53 +0000
+Cannot render console from 172.26.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by TasksController#new as HTML
+  [1m[36mUser Load (1.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11
+  Rendering tasks/new.html.slim within layouts/application
+  Rendered tasks/new.html.slim within layouts/application (34.2ms)
+Completed 200 OK in 247ms (Views: 203.4ms | ActiveRecord: 6.4ms)
+
+
+Started POST "/tasks/new/confirm" for 172.26.0.1 at 2019-12-07 11:28:00 +0000
+Cannot render console from 172.26.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by TasksController#confirm_new as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"v3BbdWcB6V7mpxJB6rCLOLp012ytDJzneCWN06zo4GyF+5Oa2LVtK1j0iWmcqeG3lDu5fgMLBJrPfp6Qd03j2w==", "task"=>{"name"=>"hoge", "description"=>"hoge"}, "commit"=>"確認"}
+  [1m[36mUser Load (3.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11
+Unpermitted parameter: :description
+  Rendering tasks/confirm_new.html.slim within layouts/application
+  Rendered tasks/confirm_new.html.slim within layouts/application (8.6ms)
+Completed 200 OK in 167ms (Views: 116.1ms | ActiveRecord: 3.3ms)
+
+
+Started POST "/tasks" for 172.26.0.1 at 2019-12-07 11:28:01 +0000
+Cannot render console from 172.26.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by TasksController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"EQIQJJec+G196jEmIDQhKiikJb2ZJpCyYoD6jRWYQNiEGkuxrZvcE4qgMyjHFRrbpYWYGW5GQqQ/wrpAZ2FVkg==", "task"=>{"name"=>"hoge", "description"=>""}, "commit"=>"登録"}
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11
+Unpermitted parameter: :description
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/tasks_controller.rb:32
+  [1m[36mTask Create (7.0ms)[0m  [1m[32mINSERT INTO "tasks" ("name", "created_at", "updated_at", "user_id") VALUES (?, ?, ?, ?)[0m  [["name", "hoge"], ["created_at", "2019-12-07 11:28:01.899507"], ["updated_at", "2019-12-07 11:28:01.899507"], ["user_id", 1]]
+  ↳ app/controllers/tasks_controller.rb:32
+  [1m[35m (5.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/tasks_controller.rb:32
+Redirected to http://localhost:3000/tasks
+Completed 302 Found in 26ms (ActiveRecord: 14.0ms)
+
+
+Started GET "/tasks" for 172.26.0.1 at 2019-12-07 11:28:01 +0000
+Cannot render console from 172.26.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by TasksController#index as HTML
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11
+  Rendering tasks/index.html.slim within layouts/application
+  [1m[36mTask Load (1.3ms)[0m  [1m[34mSELECT DISTINCT "tasks".* FROM "tasks" WHERE "tasks"."user_id" = ? ORDER BY "tasks"."created_at" DESC[0m  [["user_id", 1]]
+  ↳ app/views/tasks/index.html.slim:22
+  Rendered tasks/index.html.slim within layouts/application (7.0ms)
+Completed 200 OK in 122ms (Views: 103.9ms | ActiveRecord: 2.4ms)
+
+
+Started GET "/tasks?utf8=%E2%9C%93&q%5Bname_cont%5D=ho&commit=%E6%A4%9C%E7%B4%A2" for 172.26.0.1 at 2019-12-07 11:28:05 +0000
+Cannot render console from 172.26.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by TasksController#index as HTML
+  Parameters: {"utf8"=>"✓", "q"=>{"name_cont"=>"ho"}, "commit"=>"検索"}
+  [1m[36mUser Load (2.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11
+  Rendering tasks/index.html.slim within layouts/application
+  [1m[36mTask Load (1.2ms)[0m  [1m[34mSELECT DISTINCT "tasks".* FROM "tasks" WHERE "tasks"."user_id" = ? AND "tasks"."name" LIKE '%ho%' ORDER BY "tasks"."created_at" DESC[0m  [["user_id", 1]]
+  ↳ app/views/tasks/index.html.slim:22
+  Rendered tasks/index.html.slim within layouts/application (10.3ms)
+Completed 200 OK in 120ms (Views: 99.4ms | ActiveRecord: 3.2ms)
+
+
+Started GET "/tasks?utf8=%E2%9C%93&q%5Bname_cont%5D=d&commit=%E6%A4%9C%E7%B4%A2" for 172.26.0.1 at 2019-12-07 11:28:08 +0000
+Cannot render console from 172.26.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by TasksController#index as HTML
+  Parameters: {"utf8"=>"✓", "q"=>{"name_cont"=>"d"}, "commit"=>"検索"}
+  [1m[36mUser Load (2.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11
+  Rendering tasks/index.html.slim within layouts/application
+  [1m[36mTask Load (1.3ms)[0m  [1m[34mSELECT DISTINCT "tasks".* FROM "tasks" WHERE "tasks"."user_id" = ? AND "tasks"."name" LIKE '%d%' ORDER BY "tasks"."created_at" DESC[0m  [["user_id", 1]]
+  ↳ app/views/tasks/index.html.slim:22
+  Rendered tasks/index.html.slim within layouts/application (10.3ms)
+Completed 200 OK in 134ms (Views: 109.3ms | ActiveRecord: 3.2ms)
+
+
+Started GET "/tasks?utf8=%E2%9C%93&q%5Bname_cont%5D=&commit=%E6%A4%9C%E7%B4%A2" for 172.26.0.1 at 2019-12-07 11:28:10 +0000
+Cannot render console from 172.26.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by TasksController#index as HTML
+  Parameters: {"utf8"=>"✓", "q"=>{"name_cont"=>""}, "commit"=>"検索"}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11
+  Rendering tasks/index.html.slim within layouts/application
+  [1m[36mTask Load (1.3ms)[0m  [1m[34mSELECT DISTINCT "tasks".* FROM "tasks" WHERE "tasks"."user_id" = ? ORDER BY "tasks"."created_at" DESC[0m  [["user_id", 1]]
+  ↳ app/views/tasks/index.html.slim:22
+  Rendered tasks/index.html.slim within layouts/application (10.3ms)
+Completed 200 OK in 131ms (Views: 112.2ms | ActiveRecord: 2.3ms)
+
+
+Started GET "/tasks?utf8=%E2%9C%93&q%5Bname_cont%5D=&commit=%E6%A4%9C%E7%B4%A2" for 172.26.0.1 at 2019-12-07 11:31:59 +0000
+Cannot render console from 172.26.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by TasksController#index as HTML
+  Parameters: {"utf8"=>"✓", "q"=>{"name_cont"=>""}, "commit"=>"検索"}
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11
+  Rendering tasks/index.html.slim within layouts/application
+  [1m[36mTask Load (1.4ms)[0m  [1m[34mSELECT DISTINCT "tasks".* FROM "tasks" WHERE "tasks"."user_id" = ? ORDER BY "tasks"."created_at" DESC[0m  [["user_id", 1]]
+  ↳ app/views/tasks/index.html.slim:26
+  Rendered tasks/index.html.slim within layouts/application (7.6ms)
+Completed 200 OK in 117ms (Views: 99.3ms | ActiveRecord: 2.6ms)
+
+
+Started GET "/tasks?utf8=%E2%9C%93&q%5Bname_cont%5D=&q%5Bcreated_at_gteq%5D=12&commit=%E6%A4%9C%E7%B4%A2" for 172.26.0.1 at 2019-12-07 11:32:05 +0000
+Cannot render console from 172.26.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by TasksController#index as HTML
+  Parameters: {"utf8"=>"✓", "q"=>{"name_cont"=>"", "created_at_gteq"=>"12"}, "commit"=>"検索"}
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11
+  Rendering tasks/index.html.slim within layouts/application
+  [1m[36mTask Load (1.2ms)[0m  [1m[34mSELECT DISTINCT "tasks".* FROM "tasks" WHERE "tasks"."user_id" = ? AND "tasks"."created_at" >= '2019-12-11 15:00:00' ORDER BY "tasks"."created_at" DESC[0m  [["user_id", 1]]
+  ↳ app/views/tasks/index.html.slim:26
+  Rendered tasks/index.html.slim within layouts/application (7.1ms)
+Completed 200 OK in 138ms (Views: 117.5ms | ActiveRecord: 2.8ms)
+
+
+Started GET "/tasks?utf8=%E2%9C%93&q%5Bname_cont%5D=&q%5Bcreated_at_gteq%5D=12&commit=%E6%A4%9C%E7%B4%A2" for 172.26.0.1 at 2019-12-07 11:56:49 +0000
+Cannot render console from 172.26.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by TasksController#index as HTML
+  Parameters: {"utf8"=>"✓", "q"=>{"name_cont"=>"", "created_at_gteq"=>"12"}, "commit"=>"検索"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11
+  Rendering tasks/index.html.slim within layouts/application
+  [1m[36mTask Load (1.8ms)[0m  [1m[34mSELECT DISTINCT "tasks".* FROM "tasks" WHERE "tasks"."user_id" = ? AND "tasks"."created_at" >= '2019-12-11 15:00:00'[0m  [["user_id", 1]]
+  ↳ app/views/tasks/index.html.slim:26
+  Rendered tasks/index.html.slim within layouts/application (8.5ms)
+Completed 200 OK in 165ms (Views: 116.9ms | ActiveRecord: 6.4ms)
+
+
+Started GET "/tasks?utf8=%E2%9C%93&q%5Bname_cont%5D=&q%5Bcreated_at_gteq%5D=12&commit=%E6%A4%9C%E7%B4%A2" for 172.26.0.1 at 2019-12-07 11:56:53 +0000
+Cannot render console from 172.26.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by TasksController#index as HTML
+  Parameters: {"utf8"=>"✓", "q"=>{"name_cont"=>"", "created_at_gteq"=>"12"}, "commit"=>"検索"}
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11
+  Rendering tasks/index.html.slim within layouts/application
+  [1m[36mTask Load (1.1ms)[0m  [1m[34mSELECT DISTINCT "tasks".* FROM "tasks" WHERE "tasks"."user_id" = ? AND "tasks"."created_at" >= '2019-12-11 15:00:00'[0m  [["user_id", 1]]
+  ↳ app/views/tasks/index.html.slim:26
+  Rendered tasks/index.html.slim within layouts/application (7.7ms)
+Completed 200 OK in 98ms (Views: 84.5ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/tasks?utf8=%E2%9C%93&q%5Bname_cont%5D=ho&q%5Bcreated_at_gteq%5D=&commit=%E6%A4%9C%E7%B4%A2" for 172.26.0.1 at 2019-12-07 11:57:06 +0000
+Cannot render console from 172.26.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by TasksController#index as HTML
+  Parameters: {"utf8"=>"✓", "q"=>{"name_cont"=>"ho", "created_at_gteq"=>""}, "commit"=>"検索"}
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11
+  Rendering tasks/index.html.slim within layouts/application
+  [1m[36mTask Load (1.1ms)[0m  [1m[34mSELECT DISTINCT "tasks".* FROM "tasks" WHERE "tasks"."user_id" = ? AND "tasks"."name" LIKE '%ho%'[0m  [["user_id", 1]]
+  ↳ app/views/tasks/index.html.slim:26
+  Rendered tasks/index.html.slim within layouts/application (12.2ms)
+Completed 200 OK in 120ms (Views: 102.9ms | ActiveRecord: 3.0ms)
+
+
+Started GET "/?commit=%E6%A4%9C%E7%B4%A2&q%5Bcreated_at_gteq%5D=&q%5Bname_cont%5D=ho&q%5Bs%5D=name+asc&utf8=%E2%9C%93" for 172.26.0.1 at 2019-12-07 11:57:09 +0000
+Cannot render console from 172.26.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by TasksController#index as HTML
+  Parameters: {"commit"=>"検索", "q"=>{"created_at_gteq"=>"", "name_cont"=>"ho", "s"=>"name asc"}, "utf8"=>"✓"}
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11
+  Rendering tasks/index.html.slim within layouts/application
+  [1m[36mTask Load (1.7ms)[0m  [1m[34mSELECT DISTINCT "tasks".* FROM "tasks" WHERE "tasks"."user_id" = ? AND "tasks"."name" LIKE '%ho%' ORDER BY "tasks"."name" ASC[0m  [["user_id", 1]]
+  ↳ app/views/tasks/index.html.slim:26
+  Rendered tasks/index.html.slim within layouts/application (10.4ms)
+Completed 200 OK in 133ms (Views: 108.5ms | ActiveRecord: 2.9ms)
+
+
+Started GET "/?commit=%E6%A4%9C%E7%B4%A2&q%5Bcreated_at_gteq%5D=&q%5Bname_cont%5D=ho&q%5Bs%5D=name+desc&utf8=%E2%9C%93" for 172.26.0.1 at 2019-12-07 11:57:10 +0000
+Cannot render console from 172.26.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by TasksController#index as HTML
+  Parameters: {"commit"=>"検索", "q"=>{"created_at_gteq"=>"", "name_cont"=>"ho", "s"=>"name desc"}, "utf8"=>"✓"}
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11
+  Rendering tasks/index.html.slim within layouts/application
+  [1m[36mTask Load (1.3ms)[0m  [1m[34mSELECT DISTINCT "tasks".* FROM "tasks" WHERE "tasks"."user_id" = ? AND "tasks"."name" LIKE '%ho%' ORDER BY "tasks"."name" DESC[0m  [["user_id", 1]]
+  ↳ app/views/tasks/index.html.slim:26
+  Rendered tasks/index.html.slim within layouts/application (9.0ms)
+Completed 200 OK in 127ms (Views: 104.8ms | ActiveRecord: 2.7ms)
+
+
+Started GET "/?commit=%E6%A4%9C%E7%B4%A2&q%5Bcreated_at_gteq%5D=&q%5Bname_cont%5D=ho&q%5Bs%5D=name+asc&utf8=%E2%9C%93" for 172.26.0.1 at 2019-12-07 11:57:11 +0000
+Cannot render console from 172.26.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by TasksController#index as HTML
+  Parameters: {"commit"=>"検索", "q"=>{"created_at_gteq"=>"", "name_cont"=>"ho", "s"=>"name asc"}, "utf8"=>"✓"}
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11
+  Rendering tasks/index.html.slim within layouts/application
+  [1m[36mTask Load (1.1ms)[0m  [1m[34mSELECT DISTINCT "tasks".* FROM "tasks" WHERE "tasks"."user_id" = ? AND "tasks"."name" LIKE '%ho%' ORDER BY "tasks"."name" ASC[0m  [["user_id", 1]]
+  ↳ app/views/tasks/index.html.slim:26
+  Rendered tasks/index.html.slim within layouts/application (9.6ms)
+Completed 200 OK in 142ms (Views: 122.7ms | ActiveRecord: 2.2ms)
+
+
+Started GET "/?commit=%E6%A4%9C%E7%B4%A2&q%5Bcreated_at_gteq%5D=&q%5Bname_cont%5D=ho&q%5Bs%5D=name+desc&utf8=%E2%9C%93" for 172.26.0.1 at 2019-12-07 11:57:11 +0000
+Cannot render console from 172.26.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by TasksController#index as HTML
+  Parameters: {"commit"=>"検索", "q"=>{"created_at_gteq"=>"", "name_cont"=>"ho", "s"=>"name desc"}, "utf8"=>"✓"}
+  [1m[36mUser Load (2.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11
+  Rendering tasks/index.html.slim within layouts/application
+  [1m[36mTask Load (1.5ms)[0m  [1m[34mSELECT DISTINCT "tasks".* FROM "tasks" WHERE "tasks"."user_id" = ? AND "tasks"."name" LIKE '%ho%' ORDER BY "tasks"."name" DESC[0m  [["user_id", 1]]
+  ↳ app/views/tasks/index.html.slim:26
+  Rendered tasks/index.html.slim within layouts/application (8.0ms)
+Completed 200 OK in 167ms (Views: 132.5ms | ActiveRecord: 3.9ms)
+
+
+Started GET "/tasks/new" for 172.26.0.1 at 2019-12-07 11:57:23 +0000
+Cannot render console from 172.26.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by TasksController#new as HTML
+  [1m[36mUser Load (1.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11
+  Rendering tasks/new.html.slim within layouts/application
+  Rendered tasks/new.html.slim within layouts/application (6.2ms)
+Completed 200 OK in 236ms (Views: 196.4ms | ActiveRecord: 1.8ms)
+
+
+Started POST "/tasks/new/confirm" for 172.26.0.1 at 2019-12-07 11:57:27 +0000
+Cannot render console from 172.26.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by TasksController#confirm_new as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"I4gjP9nemgXPwQu1uycqkG9eynMPE3bFqAeve3UE38IZA+vQZmoecHGSkJ3NPkAfQRGkYaEU7rgfXLw4rqHcdQ==", "task"=>{"name"=>"srth", "description"=>"atha"}, "commit"=>"確認"}
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11
+Unpermitted parameter: :description
+  Rendering tasks/confirm_new.html.slim within layouts/application
+  Rendered tasks/confirm_new.html.slim within layouts/application (3.2ms)
+Completed 200 OK in 172ms (Views: 147.5ms | ActiveRecord: 1.3ms)
+
+
+Started POST "/tasks" for 172.26.0.1 at 2019-12-07 11:57:28 +0000
+Cannot render console from 172.26.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by TasksController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"O4ZWxkd91Q2oIk35blzRf2Hs8AOOOq5VE/h0PDjufgeung1TfXrxc19oT/eJfeqO7M1Np3lafENOujTxShdrTQ==", "task"=>{"name"=>"srth", "description"=>""}, "commit"=>"登録"}
+  [1m[36mUser Load (1.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11
+Unpermitted parameter: :description
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/tasks_controller.rb:32
+  [1m[36mTask Create (7.9ms)[0m  [1m[32mINSERT INTO "tasks" ("name", "created_at", "updated_at", "user_id") VALUES (?, ?, ?, ?)[0m  [["name", "srth"], ["created_at", "2019-12-07 11:57:28.297371"], ["updated_at", "2019-12-07 11:57:28.297371"], ["user_id", 1]]
+  ↳ app/controllers/tasks_controller.rb:32
+  [1m[35m (5.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/tasks_controller.rb:32
+Redirected to http://localhost:3000/tasks
+Completed 302 Found in 24ms (ActiveRecord: 14.7ms)
+
+
+Started GET "/tasks" for 172.26.0.1 at 2019-12-07 11:57:28 +0000
+Cannot render console from 172.26.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by TasksController#index as HTML
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11
+  Rendering tasks/index.html.slim within layouts/application
+  [1m[36mTask Load (1.9ms)[0m  [1m[34mSELECT DISTINCT "tasks".* FROM "tasks" WHERE "tasks"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/views/tasks/index.html.slim:26
+  Rendered tasks/index.html.slim within layouts/application (8.3ms)
+Completed 200 OK in 150ms (Views: 131.1ms | ActiveRecord: 3.0ms)
+
+
+Started GET "/tasks?utf8=%E2%9C%93&q%5Bname_cont%5D=o&q%5Bcreated_at_gteq%5D=&commit=%E6%A4%9C%E7%B4%A2" for 172.26.0.1 at 2019-12-07 11:57:34 +0000
+Cannot render console from 172.26.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by TasksController#index as HTML
+  Parameters: {"utf8"=>"✓", "q"=>{"name_cont"=>"o", "created_at_gteq"=>""}, "commit"=>"検索"}
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11
+  Rendering tasks/index.html.slim within layouts/application
+  [1m[36mTask Load (1.9ms)[0m  [1m[34mSELECT DISTINCT "tasks".* FROM "tasks" WHERE "tasks"."user_id" = ? AND "tasks"."name" LIKE '%o%'[0m  [["user_id", 1]]
+  ↳ app/views/tasks/index.html.slim:26
+  Rendered tasks/index.html.slim within layouts/application (8.8ms)
+Completed 200 OK in 161ms (Views: 137.0ms | ActiveRecord: 3.1ms)
+
+
+Started GET "/tasks/new" for 172.26.0.1 at 2019-12-07 11:57:36 +0000
+Cannot render console from 172.26.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by TasksController#new as HTML
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11
+  Rendering tasks/new.html.slim within layouts/application
+  Rendered tasks/new.html.slim within layouts/application (3.2ms)
+Completed 200 OK in 179ms (Views: 149.4ms | ActiveRecord: 1.1ms)
+
+
+Started POST "/tasks/new/confirm" for 172.26.0.1 at 2019-12-07 11:57:40 +0000
+Cannot render console from 172.26.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by TasksController#confirm_new as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"ZNTwIkXHWy3S710+IO8jXdcmLiPrNOJ5XhauDe6okcleXzjN+nPfWGy8xhZW9knS+WlAMUUzegTpTb1ONQ2Sfg==", "task"=>{"name"=>"ghu", "description"=>"garg"}, "commit"=>"確認"}
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11
+Unpermitted parameter: :description
+  Rendering tasks/confirm_new.html.slim within layouts/application
+  Rendered tasks/confirm_new.html.slim within layouts/application (3.1ms)
+Completed 200 OK in 149ms (Views: 124.2ms | ActiveRecord: 1.1ms)
+
+
+Started POST "/tasks" for 172.26.0.1 at 2019-12-07 11:57:42 +0000
+Cannot render console from 172.26.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by TasksController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"arlpx+rwp1kJpU5SoYmocvbBiWKUUHLwFpHPL21OCzz/oTJS0PeDJ/7vTFxGqJODe+A0xmMwoOZL04/iH7cedg==", "task"=>{"name"=>"ghu", "description"=>""}, "commit"=>"登録"}
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11
+Unpermitted parameter: :description
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/tasks_controller.rb:32
+  [1m[36mTask Create (9.4ms)[0m  [1m[32mINSERT INTO "tasks" ("name", "created_at", "updated_at", "user_id") VALUES (?, ?, ?, ?)[0m  [["name", "ghu"], ["created_at", "2019-12-07 11:57:42.780223"], ["updated_at", "2019-12-07 11:57:42.780223"], ["user_id", 1]]
+  ↳ app/controllers/tasks_controller.rb:32
+  [1m[35m (5.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/tasks_controller.rb:32
+Redirected to http://localhost:3000/tasks
+Completed 302 Found in 27ms (ActiveRecord: 16.5ms)
+
+
+Started GET "/tasks" for 172.26.0.1 at 2019-12-07 11:57:42 +0000
+Cannot render console from 172.26.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by TasksController#index as HTML
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11
+  Rendering tasks/index.html.slim within layouts/application
+  [1m[36mTask Load (1.4ms)[0m  [1m[34mSELECT DISTINCT "tasks".* FROM "tasks" WHERE "tasks"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/views/tasks/index.html.slim:26
+  Rendered tasks/index.html.slim within layouts/application (11.2ms)
+Completed 200 OK in 149ms (Views: 129.6ms | ActiveRecord: 2.6ms)
+
+
+Started GET "/tasks?utf8=%E2%9C%93&q%5Bname_cont%5D=h&q%5Bcreated_at_gteq%5D=&commit=%E6%A4%9C%E7%B4%A2" for 172.26.0.1 at 2019-12-07 11:57:44 +0000
+Cannot render console from 172.26.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by TasksController#index as HTML
+  Parameters: {"utf8"=>"✓", "q"=>{"name_cont"=>"h", "created_at_gteq"=>""}, "commit"=>"検索"}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11
+  Rendering tasks/index.html.slim within layouts/application
+  [1m[36mTask Load (1.2ms)[0m  [1m[34mSELECT DISTINCT "tasks".* FROM "tasks" WHERE "tasks"."user_id" = ? AND "tasks"."name" LIKE '%h%'[0m  [["user_id", 1]]
+  ↳ app/views/tasks/index.html.slim:26
+  Rendered tasks/index.html.slim within layouts/application (8.3ms)
+Completed 200 OK in 116ms (Views: 99.9ms | ActiveRecord: 2.2ms)
+
+
+Started GET "/?commit=%E6%A4%9C%E7%B4%A2&q%5Bcreated_at_gteq%5D=&q%5Bname_cont%5D=h&q%5Bs%5D=name+asc&utf8=%E2%9C%93" for 172.26.0.1 at 2019-12-07 11:57:49 +0000
+Cannot render console from 172.26.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by TasksController#index as HTML
+  Parameters: {"commit"=>"検索", "q"=>{"created_at_gteq"=>"", "name_cont"=>"h", "s"=>"name asc"}, "utf8"=>"✓"}
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11
+  Rendering tasks/index.html.slim within layouts/application
+  [1m[36mTask Load (3.6ms)[0m  [1m[34mSELECT DISTINCT "tasks".* FROM "tasks" WHERE "tasks"."user_id" = ? AND "tasks"."name" LIKE '%h%' ORDER BY "tasks"."name" ASC[0m  [["user_id", 1]]
+  ↳ app/views/tasks/index.html.slim:26
+  Rendered tasks/index.html.slim within layouts/application (20.9ms)
+Completed 200 OK in 230ms (Views: 187.7ms | ActiveRecord: 5.0ms)
+
+
+Started GET "/?commit=%E6%A4%9C%E7%B4%A2&q%5Bcreated_at_gteq%5D=&q%5Bname_cont%5D=h&q%5Bs%5D=name+desc&utf8=%E2%9C%93" for 172.26.0.1 at 2019-12-07 11:57:50 +0000
+Cannot render console from 172.26.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by TasksController#index as HTML
+  Parameters: {"commit"=>"検索", "q"=>{"created_at_gteq"=>"", "name_cont"=>"h", "s"=>"name desc"}, "utf8"=>"✓"}
+  [1m[36mUser Load (3.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11
+  Rendering tasks/index.html.slim within layouts/application
+  [1m[36mTask Load (1.8ms)[0m  [1m[34mSELECT DISTINCT "tasks".* FROM "tasks" WHERE "tasks"."user_id" = ? AND "tasks"."name" LIKE '%h%' ORDER BY "tasks"."name" DESC[0m  [["user_id", 1]]
+  ↳ app/views/tasks/index.html.slim:26
+  Rendered tasks/index.html.slim within layouts/application (9.2ms)
+Completed 200 OK in 236ms (Views: 186.0ms | ActiveRecord: 4.9ms)
+
+
+Started GET "/?commit=%E6%A4%9C%E7%B4%A2&q%5Bcreated_at_gteq%5D=&q%5Bname_cont%5D=h&q%5Bs%5D=name+asc&utf8=%E2%9C%93" for 172.26.0.1 at 2019-12-07 11:57:51 +0000
+Cannot render console from 172.26.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by TasksController#index as HTML
+  Parameters: {"commit"=>"検索", "q"=>{"created_at_gteq"=>"", "name_cont"=>"h", "s"=>"name asc"}, "utf8"=>"✓"}
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11
+  Rendering tasks/index.html.slim within layouts/application
+  [1m[36mTask Load (1.8ms)[0m  [1m[34mSELECT DISTINCT "tasks".* FROM "tasks" WHERE "tasks"."user_id" = ? AND "tasks"."name" LIKE '%h%' ORDER BY "tasks"."name" ASC[0m  [["user_id", 1]]
+  ↳ app/views/tasks/index.html.slim:26
+  Rendered tasks/index.html.slim within layouts/application (9.3ms)
+Completed 200 OK in 238ms (Views: 207.2ms | ActiveRecord: 3.2ms)
+
+
+Started GET "/?commit=%E6%A4%9C%E7%B4%A2&q%5Bcreated_at_gteq%5D=&q%5Bname_cont%5D=h&q%5Bs%5D=name+desc&utf8=%E2%9C%93" for 172.26.0.1 at 2019-12-07 11:58:04 +0000
+Cannot render console from 172.26.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by TasksController#index as HTML
+  Parameters: {"commit"=>"検索", "q"=>{"created_at_gteq"=>"", "name_cont"=>"h", "s"=>"name desc"}, "utf8"=>"✓"}
+  [1m[36mUser Load (2.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11
+  Rendering tasks/index.html.slim within layouts/application
+  [1m[36mTask Load (1.7ms)[0m  [1m[34mSELECT DISTINCT "tasks".* FROM "tasks" WHERE "tasks"."user_id" = ? AND "tasks"."name" LIKE '%h%' ORDER BY "tasks"."name" DESC[0m  [["user_id", 1]]
+  ↳ app/views/tasks/index.html.slim:26
+  Rendered tasks/index.html.slim within layouts/application (13.5ms)
+Completed 200 OK in 177ms (Views: 139.8ms | ActiveRecord: 4.3ms)
+
+
+Started GET "/?commit=%E6%A4%9C%E7%B4%A2&q%5Bcreated_at_gteq%5D=&q%5Bname_cont%5D=h&q%5Bs%5D=name+asc&utf8=%E2%9C%93" for 172.26.0.1 at 2019-12-07 11:58:05 +0000
+Cannot render console from 172.26.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by TasksController#index as HTML
+  Parameters: {"commit"=>"検索", "q"=>{"created_at_gteq"=>"", "name_cont"=>"h", "s"=>"name asc"}, "utf8"=>"✓"}
+  [1m[36mUser Load (2.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11
+  Rendering tasks/index.html.slim within layouts/application
+  [1m[36mTask Load (1.3ms)[0m  [1m[34mSELECT DISTINCT "tasks".* FROM "tasks" WHERE "tasks"."user_id" = ? AND "tasks"."name" LIKE '%h%' ORDER BY "tasks"."name" ASC[0m  [["user_id", 1]]
+  ↳ app/views/tasks/index.html.slim:26
+  Rendered tasks/index.html.slim within layouts/application (8.2ms)
+Completed 200 OK in 188ms (Views: 149.3ms | ActiveRecord: 3.7ms)
+
+
