@@ -10,7 +10,7 @@ h1 登録内容の確認
       tr
         th = Task.human_attribute_name(:description)
         td = simple_format(@task.description)
-        / このフォームではユーザー殻見えない形で決まった値を送りたいのでhidden_fieldを使う
+        / このフォームではユーザーから見えない形で決まった値を送りたいのでhidden_fieldを使う
         = f.hidden_field :description
   
   = f.submit '戻る', name: 'back', class: 'btn btn-secondary mr-3'

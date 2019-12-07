@@ -20,6 +20,13 @@ class TasksController < ApplicationController
     # 安全化されたtaskパラメータをtask_paramsメソッドで取得して、それを使ってTaskオブジェクトを作成する
     # @をつけることにより、エラーが発生しても入力した内容がフォームにそのまま残る
     @task = current_user.tasks.new(task_params) # ログインしているユーザーのidをuser_idに入れた状態でTaskデータを登録する
+
+    # 戻るボタンが押された場合は現在のタスクを引き継ぐ
+    if params[:back].present?
+      render :new
+      return
+    end
+
     if @task.save # DBに保存 バリデーションをつけたので、!がいらなくなった
       # 一覧画面に遷移
       redirect_to tasks_url, notice: "タスク「#{@task.name}」を登録しました。"
