@@ -20,6 +20,7 @@ gem 'bootstrap'
 gem 'solargraph'
 gem 'bcrypt', '~> 3.1.7'
 gem 'rails_autolink'
+gem 'ransack'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

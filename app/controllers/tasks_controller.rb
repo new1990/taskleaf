@@ -2,8 +2,10 @@ class TasksController < ApplicationController
   before_action :set_task, only: [:show, :edit, :update, :destroy]
 
   def index
-    # 一覧のための全タスクデータを取得(ビューで使うためインスタンス変数)
-    @tasks = current_user.tasks.order(created_at: :desc)
+    # 検索
+    @q = current_user.tasks.ransack(params[:q])
+    @tasks = @q.result(distinct: true)
+    
   end
 
   def show
